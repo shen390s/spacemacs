@@ -23,6 +23,12 @@
 (defvar chinese-enable-fcitx nil
   "Enable fcitx to help writing Chinese in Evil mode.")
 
+;; enable pangu-spacing-mode in large c/c++
+;; file may have performance issues when move
+;; cursor quickly
+(defvar pangu-spacing-exclude-modes nil
+  "Buffer mode which pangu-spacing will be turned off")
+
 ;; Set the monospaced font size when mixed Chinese and English words
 (defun spacemacs//set-monospaced-font (english chinese english-size chinese-size)
   (set-face-attribute 'default nil :font
