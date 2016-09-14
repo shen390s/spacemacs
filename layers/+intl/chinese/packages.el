@@ -94,7 +94,12 @@
                  ;; Always insert `real' space in org-mode.
                  (add-hook 'org-mode-hook
                            '(lambda ()
-                              (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))))
+                              (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
+                 (mapcar #'(lambda (mode)
+                             (add-hook (intern (concat (symbol-name mode) "-hook"))
+                                       #'(lambda ()
+                                           (pangu-spacing-mode 0))))
+                         pangu-spacing-exclude-modes))))
 
 (defun chinese/post-init-org ()
   (defadvice org-html-paragraph (before org-html-paragraph-advice
