@@ -127,17 +127,16 @@
       (helm-locate-set-command)
       (setq helm-locate-fuzzy-match (string-match "locate" helm-locate-command))
       ;; alter helm-bookmark key bindings to be simpler
-      ;; TODO check if there is a more elegant solution to setup these bindings
       (defun simpler-helm-bookmark-keybindings ()
-;;        (define-key helm-bookmark-map (kbd "C-d") 'helm-bookmark-run-delete)
-;;        (define-key helm-bookmark-map (kbd "C-e") 'helm-bookmark-run-edit)
-;;        (define-key helm-bookmark-map
-;;          (kbd "C-f") 'helm-bookmark-toggle-filename)
-;;        (define-key helm-bookmark-map
-;;          (kbd "C-o") 'helm-bookmark-run-jump-other-window)
-;;        (define-key helm-bookmark-map (kbd "C-/") 'helm-bookmark-help))
-       )
-      (add-hook 'helm-mode-hook 'simpler-helm-bookmark-keybindings)
+        (define-key helm-bookmark-map (kbd "C-d") 'helm-bookmark-run-delete)
+        (define-key helm-bookmark-map (kbd "C-e") 'helm-bookmark-run-edit)
+        (define-key helm-bookmark-map
+          (kbd "C-f") 'helm-bookmark-toggle-filename)
+        (define-key helm-bookmark-map
+          (kbd "C-o") 'helm-bookmark-run-jump-other-window)
+        (define-key helm-bookmark-map (kbd "C-/") 'helm-bookmark-help))
+      (with-eval-after-load 'helm-bookmark
+        (simpler-helm-bookmark-keybindings))
       (with-eval-after-load 'helm-mode ; required
         (spacemacs|hide-lighter helm-mode)))))
 

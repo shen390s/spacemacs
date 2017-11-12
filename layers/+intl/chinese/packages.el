@@ -13,7 +13,7 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq chinese-packages
       '(
-        (chinese-pyim :toggle (eq chinese-default-input-method 'pinyin))
+        (pyim :toggle (eq chinese-default-input-method 'pinyin))
         (chinese-wbim :toggle (eq chinese-default-input-method 'wubi))
         (fcitx :toggle chinese-enable-fcitx)
         find-by-pinyin-dired
@@ -59,8 +59,8 @@
             ;; Enable Chinese word segmentation support
             youdao-dictionary-use-chinese-word-segmentation t))))
 
-(defun chinese/init-chinese-pyim ()
-  (use-package chinese-pyim
+(defun chinese/init-pyim ()
+  (use-package pyim
     :if (eq 'pinyin chinese-default-input-method)
     :init
     (progn
@@ -69,7 +69,7 @@
             pyim-dicts-directory (expand-file-name "dicts/" pyim-directory)
             pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
             pyim-personal-file (expand-file-name "pyim-personal.txt" pyim-directory)
-            default-input-method "chinese-pyim")
+            default-input-method "pyim")
       (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))))
 
 (defun chinese/init-find-by-pinyin-dired ()
