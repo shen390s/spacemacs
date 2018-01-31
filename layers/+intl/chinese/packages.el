@@ -64,13 +64,11 @@
     :if (eq 'pinyin chinese-default-input-method)
     :init
     (progn
-      (setq pyim-use-tooltip t
+      (setq pyim-page-tooltip t
             pyim-directory (expand-file-name "pyim/" spacemacs-cache-directory)
-            pyim-dicts-directory (expand-file-name "dicts/" pyim-directory)
             pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
-            pyim-personal-file (expand-file-name "pyim-personal.txt" pyim-directory)
             default-input-method "pyim")
-      (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))))
+      (evilified-state-evilify pyim-dm-mode pyim-dm-mode-map))))
 
 (defun chinese/init-find-by-pinyin-dired ()
   (use-package find-by-pinyin-dired
